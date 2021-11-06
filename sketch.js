@@ -34,7 +34,7 @@ function draw() {
       escreverPosBia(-3,0);
     }
     if (keyDown("right")){
-      escreverJJ(3,0);
+      escreverPosBia(3,0);
     }
     if (keyDown("w")){
       escreverJJ(0,-3);
