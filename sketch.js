@@ -1,6 +1,7 @@
 var bola, bola2;
 var database;
 var position;
+var positionJJ;
 
 function setup() {
   database = firebase.database();
@@ -73,9 +74,9 @@ function escreverJJ(x,y){
   });
 }
 function lerPosJJ(data){
-  position = data.val();
-  bola2.x = position.x;
-  bola2.y = position.y;
+  positionJJ = data.val();
+  bola2.x = positionJJ.x;
+  bola2.y = positionJJ.y;
 }
 function mostrarErro2(){
   console.log("erro na conexão com a base de dados");
