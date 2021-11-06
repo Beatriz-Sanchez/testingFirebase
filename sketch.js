@@ -2,6 +2,12 @@ var bola, bola2;
 var database;
 var position;
 var positionJJ;
+var imageBia, imageJJ;
+
+function preload(){
+  imageBia = loadImage("bia.jpg");
+  imageJJ = loadImage("jj.jpg");
+}
 
 function setup() {
   database = firebase.database();
@@ -10,6 +16,11 @@ function setup() {
   bola.shapeColor = "hotpink";
   bola2 = createSprite(100, 100, 10, 10);
   bola2.shapeColor = "lightskyblue";
+  bola.addImage(imageBia);
+  bola.scale = 0.1;
+  bola2.addImage(imageJJ);
+  bola2.scale=0.1;
+  
 
   var bolapos = database.ref('bolaBia/position');
   bolapos.on("value", lerPos, mostrarErro);
@@ -69,8 +80,8 @@ function mostrarErro(){
 }
 function escreverJJ(x,y){
   database.ref('bolaJJ/position').set({
-    'x': position.x + x ,
-    'y': position.y + y
+    'x': positionJJ.x + x ,
+    'y': positionJJ.y + y
   });
 }
 function lerPosJJ(data){
