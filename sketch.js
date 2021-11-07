@@ -90,7 +90,6 @@ function draw() {
     bola2.bounceOff(edges);
     bola.bounce(bola2);
   }
-
 }
 function escreverPosBia(sprite){
   database.ref('bolaBia/position').set({
