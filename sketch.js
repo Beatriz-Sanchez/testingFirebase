@@ -5,6 +5,7 @@ var positionJJ;
 var imageBia, imageJJ;
 var edges;
 var name1 = window.prompt("Enter your name: ");
+var r,g,b;
 
 function preload(){
   imageBia = loadImage("bia.jpg");
@@ -35,10 +36,13 @@ function setup() {
 }
 
 function draw() {
-  
 
-  background(Math.floor(Math.random() * 256),Math.floor(Math.random() * 256),Math.floor(Math.random() * 256))
-  
+  if(frameCount%20 === 0){
+    r = Math.floor(Math.random() * 100);
+    g = Math.floor(Math.random() * 100);
+    b = Math.floor(Math.random() * 100);
+  }
+  background(r,g,b);
 
   if (position !== undefined)
   {
