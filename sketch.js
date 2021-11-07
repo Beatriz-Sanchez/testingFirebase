@@ -20,7 +20,7 @@ function setup() {
   bola.scale = 0.1;
   bola2.addImage(imageJJ);
   bola2.scale=0.1;
-  
+  createEdgeSprites();
 
   var bolapos = database.ref('bolaBia/position');
   bolapos.on("value", lerPos, mostrarErro);
@@ -62,7 +62,8 @@ function draw() {
       escreverJJ(3,0);
     }
   }
- 
+  bola.bounceOff(edges);
+  bola2.bounceOff(edges);
 }
 function escreverPosBia(x,y){
   database.ref('bolaBia/position').set({
