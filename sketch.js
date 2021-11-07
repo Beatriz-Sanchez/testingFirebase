@@ -89,6 +89,7 @@ function draw() {
     bola.bounceOff(edges);
     bola2.bounceOff(edges);
     bola.bounce(bola2);
+    bola2.bounce(bola);
   }
 }
 function escreverPosBia(sprite){
