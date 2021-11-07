@@ -21,14 +21,15 @@ function setup() {
   bola.scale = 0.1;
   bola2.addImage(imageJJ);
   bola2.scale=0.1;
-  edges = createEdgeSprites();
-
-  var bolapos = database.ref('bolaBia/position');
+  
+ var bolapos = database.ref('bolaBia/position');
   bolapos.on("value", lerPos, mostrarErro);
   
 
   var bolaposJJ = database.ref('bolaJJ/position');
-  bolaposJJ.on("value", lerPosJJ, mostrarErro2);
+  bolaposJJ.on("value", lerPosJJ, mostrarErro);
+  
+  edges = createEdgeSprites();
 }
 
 function draw() {
@@ -38,38 +39,46 @@ function draw() {
     drawSprites();
 
     if (keyDown("up")){
-      escreverPosBia(0,-3);
+      bola.y = bola.y -3;
+      escreverPosBia(bola);
     }
     if (keyDown("down")){
-      escreverPosBia(0,3);
+      bola.y = bola.y +3;
+      escreverPosBia(bola);
     }
     if (keyDown("left")){
-      escreverPosBia(-3,0);
+      bola.x = bola.x -3;
+      escreverPosBia(bola);
     }
     if (keyDown("right")){
-      escreverPosBia(3,0);
+      bola.x = bola.x +3;
+      escreverPosBia(bola);
     }
     if (keyDown("w")){
-      escreverJJ(0,-3);
+      bola2.y = bola2.y -3;
+      escreverJJ(bola2);
     }
     if (keyDown("s")){
-      escreverJJ(0,3);
-      console.log("s");
+      bola2.y = bola2.y +3;
+      escreverJJ(bola2);
     }
     if (keyDown("a")){
-      escreverJJ(-3,0);
+      bola2.x = bola2.x -3;
+      escreverJJ(bola2);
     }
     if (keyDown("d")){
-      escreverJJ(3,0);
+      bola2.x = bola2.x +3;
+      escreverJJ(bola2);
     }
+    bola.bounceOff(edges);
+    bola2.bounceOff(edges);
   }
-  bola.bounceOff(edges);
-  bola2.bounceOff(edges);
+ 
 }
-function escreverPosBia(x,y){
+function escreverPosBia(sprite){
   database.ref('bolaBia/position').set({
-    'x': position.x + x ,
-    'y': position.y + y
+    'x': sprite.x ,
+    'y': sprite.y
   });
 }
 function lerPos(data){
@@ -80,17 +89,14 @@ function lerPos(data){
 function mostrarErro(){
   console.log("erro na conexão com a base de dados");
 }
-function escreverJJ(x,y){
+function escreverJJ(sprite){
   database.ref('bolaJJ/position').set({
-    'x': positionJJ.x + x ,
-    'y': positionJJ.y + y
+    'x': sprite.x ,
+    'y': sprite.y
   });
 }
 function lerPosJJ(data){
   positionJJ = data.val();
   bola2.x = positionJJ.x;
   bola2.y = positionJJ.y;
-}
-function mostrarErro2(){
-  console.log("erro na conexão com a base de dados");
 }
