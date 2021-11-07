@@ -4,6 +4,8 @@ var position;
 var positionJJ;
 var imageBia, imageJJ;
 var edges;
+var name1 = window.prompt("Enter your name: ");
+
 
 function preload(){
   imageBia = loadImage("bia.jpg");
@@ -12,15 +14,16 @@ function preload(){
 
 function setup() {
   database = firebase.database();
-  createCanvas(400, 400);
-  bola = createSprite(200, 200, 10, 10);
+  createCanvas(450, 450);
+  bola = createSprite(200, 200, 20, 20);
   bola.shapeColor = "hotpink";
-  bola2 = createSprite(100, 100, 10, 10);
+  bola2 = createSprite(100, 100, 20, 20);
   bola2.shapeColor = "lightskyblue";
   bola.addImage(imageBia);
-  bola.scale = 0.1;
+  bola.scale = 0.15;
   bola2.addImage(imageJJ);
-  bola2.scale=0.1;
+  bola2.scale=0.15;
+  
   
  var bolapos = database.ref('bolaBia/position');
   bolapos.on("value", lerPos, mostrarErro);
@@ -33,10 +36,16 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  
 
-  if (position !== undefined){
+  background(Math.floor(Math.random() * 256),Math.floor(Math.random() * 256),Math.floor(Math.random() * 256))
+  
+
+  if (position !== undefined)
+  {
     drawSprites();
+  if(name1.touppercase=="JAISON")
+  {
 
     if (keyDown("up")){
       bola.y = bola.y -3;
@@ -53,7 +62,11 @@ function draw() {
     if (keyDown("right")){
       bola.x = bola.x +3;
       escreverPosBia(bola);
-    }
+
+  }   
+}
+if(name1.touppercase=="JAISON")
+{
     if (keyDown("w")){
       bola2.y = bola2.y -3;
       escreverJJ(bola2);
@@ -70,6 +83,7 @@ function draw() {
       bola2.x = bola2.x +3;
       escreverJJ(bola2);
     }
+}
     bola.bounceOff(edges);
     bola2.bounceOff(edges);
     bola.bounce(bola2);
