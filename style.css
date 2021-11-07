@@ -8,5 +8,13 @@ canvas {
   margin-left: 25%;
   margin-right: 25%;
   display: block;
-  border: 2px solid rgb(236, 107, 176)
+  border: 2px solid rgb(175, 212, 6);
+  
+  border-radius: 16px;
+  border-style: solid;
+  border-width: thick;
+  background: red;
+
+
+  
 }
