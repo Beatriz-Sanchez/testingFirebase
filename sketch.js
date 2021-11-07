@@ -69,19 +69,19 @@ function draw() {
     }
     if(name1.toUpperCase()=="JAISON")
     {
-      if (keyDown("w")){
+      if (keyDown("up")){
         bola2.y = bola2.y -3;
         escreverJJ(bola2);
       }
-      if (keyDown("s")){
+      if (keyDown("down")){
         bola2.y = bola2.y +3;
         escreverJJ(bola2);
       }
-      if (keyDown("a")){
+      if (keyDown("left")){
         bola2.x = bola2.x -3;
         escreverJJ(bola2);
       }
-      if (keyDown("d")){
+      if (keyDown("right")){
         bola2.x = bola2.x +3;
         escreverJJ(bola2);
       }
