@@ -6,7 +6,6 @@ var imageBia, imageJJ;
 var edges;
 var name1 = window.prompt("Enter your name: ");
 
-
 function preload(){
   imageBia = loadImage("bia.jpg");
   imageJJ = loadImage("jj.jpg");
@@ -25,7 +24,7 @@ function setup() {
   bola2.scale=0.15;
   
   
- var bolapos = database.ref('bolaBia/position');
+  var bolapos = database.ref('bolaBia/position');
   bolapos.on("value", lerPos, mostrarErro);
   
 
@@ -44,51 +43,50 @@ function draw() {
   if (position !== undefined)
   {
     drawSprites();
-  if(name1.touppercase=="JAISON")
-  {
+    if(name1.toUpperCase()=="BIA")
+    {
 
-    if (keyDown("up")){
-      bola.y = bola.y -3;
-      escreverPosBia(bola);
+      if (keyDown("up")){
+        bola.y = bola.y -3;
+        escreverPosBia(bola);
+      }
+      if (keyDown("down")){
+        bola.y = bola.y +3;
+        escreverPosBia(bola);
+      }
+      if (keyDown("left")){
+        bola.x = bola.x -3;
+        escreverPosBia(bola);
+      }
+      if (keyDown("right")){
+        bola.x = bola.x +3;
+        escreverPosBia(bola);
+      }   
     }
-    if (keyDown("down")){
-      bola.y = bola.y +3;
-      escreverPosBia(bola);
+    if(name1.toUpperCase()=="JAISON")
+    {
+      if (keyDown("w")){
+        bola2.y = bola2.y -3;
+        escreverJJ(bola2);
+      }
+      if (keyDown("s")){
+        bola2.y = bola2.y +3;
+        escreverJJ(bola2);
+      }
+      if (keyDown("a")){
+        bola2.x = bola2.x -3;
+        escreverJJ(bola2);
+      }
+      if (keyDown("d")){
+        bola2.x = bola2.x +3;
+        escreverJJ(bola2);
+      }
     }
-    if (keyDown("left")){
-      bola.x = bola.x -3;
-      escreverPosBia(bola);
-    }
-    if (keyDown("right")){
-      bola.x = bola.x +3;
-      escreverPosBia(bola);
-
-  }   
-}
-if(name1.touppercase=="JAISON")
-{
-    if (keyDown("w")){
-      bola2.y = bola2.y -3;
-      escreverJJ(bola2);
-    }
-    if (keyDown("s")){
-      bola2.y = bola2.y +3;
-      escreverJJ(bola2);
-    }
-    if (keyDown("a")){
-      bola2.x = bola2.x -3;
-      escreverJJ(bola2);
-    }
-    if (keyDown("d")){
-      bola2.x = bola2.x +3;
-      escreverJJ(bola2);
-    }
-}
     bola.bounceOff(edges);
     bola2.bounceOff(edges);
     bola.bounce(bola2);
   }
- 
+
 }
 function escreverPosBia(sprite){
   database.ref('bolaBia/position').set({
