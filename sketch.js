@@ -3,6 +3,7 @@ var database;
 var position;
 var positionJJ;
 var imageBia, imageJJ;
+var edges;
 
 function preload(){
   imageBia = loadImage("bia.jpg");
@@ -20,7 +21,7 @@ function setup() {
   bola.scale = 0.1;
   bola2.addImage(imageJJ);
   bola2.scale=0.1;
-  createEdgeSprites();
+  edges = createEdgeSprites();
 
   var bolapos = database.ref('bolaBia/position');
   bolapos.on("value", lerPos, mostrarErro);
