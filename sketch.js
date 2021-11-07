@@ -72,7 +72,7 @@ function draw() {
     }
     bola.bounceOff(edges);
     bola2.bounceOff(edges);
-    bola.bounceOff(bola2);
+    bola.bounce(bola2);
   }
  
 }
